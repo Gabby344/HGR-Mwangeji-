@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Médicaux - Hôpital Général de Référence Mwangeji de Kolwezi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary: #1a73e8;
+            --secondary: #0d47a1;
+            --accent: #e8f0fe;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --success: #34a853;
+            --warning: #f9ab00;
+            --danger: #ea4335;
+            --text: #333333;
+            --text-light: #757575;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Services */
+        .hero-services {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('lessoins.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-services-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-services h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-services p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Services Grid */
+        .services-main {
+            background-color: white;
+        }
+
+        .services-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .category-btn {
+            padding: 12px 25px;
+            background-color: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-header {
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-features {
+            margin: 20px 0;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .service-features i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+
+        .service-hours {
+            background-color: var(--accent);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .service-hours h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Emergency Section */
+        .emergency {
+            background: linear-gradient(135deg, var(--danger), #c62828);
+            color: white;
+            text-align: center;
+        }
+
+        .emergency-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .emergency h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .emergency p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .emergency-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 30px 0;
+            display: block;
+        }
+
+        /* Specialties Section */
+        .specialties {
+            background-color: var(--accent);
+        }
+
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .specialty-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .specialty-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .specialty-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .specialty-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* Diagnostic Section */
+        .diagnostic {
+            background-color: white;
+        }
+
+        .diagnostic-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .diagnostic-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .diagnostic-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .diagnostic-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .diagnostic-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .diagnostic-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .diagnostic-services {
+            margin-top: 30px;
+        }
+
+        .diagnostic-service {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: var(--accent);
+            border-radius: 5px;
+        }
+
+        .diagnostic-service i {
+            color: var(--primary);
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Appointment Section */
+        .appointment {
+            background: linear-gradient(rgba(26, 115, 232, 0.9), rgba(13, 71, 161, 0.9)), url('lacourshopital.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .appointment h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .appointment p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .appointment-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .appointment-option {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            max-width: 300px;
+        }
+
+        .appointment-option h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .diagnostic-content {
+                grid-template-columns: 1fr;
+            }
+
+            .diagnostic-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .hero-services h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-services p {
+                font-size: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .appointment-options {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero-services h1 {
+                font-size: 2rem;
+            }
+
+            .emergency-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">HGR <span>Mwangeji</span></div>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="departements.html">Départements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Services Section -->
+    <section class="hero-services">
+        <div class="hero-services-content">
+            <h1>Nos Services Médicaux</h1>
+            <p>Des soins complets et spécialisés pour répondre à tous vos besoins de santé</p>
+            <a href="#appointment" class="btn">Prendre Rendez-vous</a>
+        </div>
+    </section>
+
+    <!-- Services Main Section -->
+    <section class="section services-main">
+        <div class="container">
+            <div class="section-title">
+                <h2>Services Cliniques</h2>
+                <p>Découvrez notre gamme complète de services médicaux spécialisés</p>
+            </div>
+
+            <div class="services-categories">
+                <button class="category-btn active" data-category="all">Tous les Services</button>
+                <button class="category-btn" data-category="medical">Médical</button>
+                <button class="category-btn" data-category="surgical">Chirurgical</button>
+                <button class="category-btn" data-category="diagnostic">Diagnostic</button>
+                <button class="category-btn" data-category="emergency">Urgences</button>
+            </div>
+
+            <div class="services-grid">
+                <!-- Médecine Générale -->
+                <div class="service-card" data-category="medical">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h3>Médecine Générale</h3>
+                        <p>Consultations et suivi médical général</p>
+                    </div>
+                    <div class="service-content">
+                        <p>Consultations médicales complètes, diagnostics, traitements et suivi des patients pour diverses affections.</p>
+                        <div class="service-features">
+                            <li><i class="fas fa-check"></i> Consultations sur rendez-vous</li>
+                            <li><i class="fas fa-check"></i> Bilan de santé annuel</li>
+                            <li><i class="fas fa-check"></i> Vaccinations</li>
+                            <li><i class="fas fa-check"></i> Suivi des maladies chroniques</li>
+                        </div>
+                        <div class="service-hours">
+                            <h4>Horaires</h4>
+                            <p>Lun - Ven: 7h00 - 18h00<br>Sam: 8h00 - 16h00</p>
+                        </div>
+                        <a href="#" class="btn btn-outline">Prendre Rendez-vous</a>
+                    </div>
+                </div>
+
+                <!-- Pédiatrie -->
+                <div class="service-card" data-category="medical">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <h3>Pédiatrie</h3>
+                        <p>Soins spécialisés pour enfants</p>
+                    </div>
+                    <div class="service-content">
+                        <p>Soins complets pour les nourrissons, enfants et adolescents avec une approche adaptée à chaque âge.</p>
+                        <div class="service-features">
+                            <li><i class="fas fa-check"></i> Consultations pédiatriques</li>
+                            <li><i class="fas fa-check"></i> Vaccination infantile</li>
+                            <li><i class="fas fa-check"></i> Croissance et développement</li>
+                            <li><i class="fas fa-check"></i> Soins aux nouveau-nés</li>
+                        </div>
+                        <div class="service-hours">
+                            <h4>Horaires</h4>
+                            <p>Lun - Ven: 8h00 - 17h00<br>Sam: 8h00 - 14h00</p>
+                        </div>
+                        <a href="#" class="btn btn-outline">Prendre Rendez-vous</a>
+                    </div>
+                </div>
+
+                <!-- Chirurgie Générale -->
+                <div class="service-card" data-category="surgical">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-scalpel"></i>
+                        </div>
+                        <h3>Chirurgie Générale</h3>
+                        <p>Interventions chirurgicales programmées</p>
+                    </div>
+                    <div class="service-content">
+                        <p>Bloc opératoire moderne équipé pour les interventions chirurgicales programmées et les chirurgies mineures.</p>
+                        <div class="service-features">
+                            <li><i class="fas fa-check"></i> Chirurgie digestive</li>
+                            <li><i class="fas fa-check"></i> Chirurgie vasculaire</li>
+                            <li><i class="fas fa-check"></i> Chirurgie des glandes</li>
+                            <li><i class="fas fa-check"></i> Chirurgie ambulatoire</li>
+                        </div>
+                        <div class="service-hours">
+                            <h4>Disponibilité</h4>
+                            <p>Interventions programmées<br>Urgences chirurgicales 24h/24</p>
+                        </div>
+                        <a href="#" class="btn btn-outline">Consulter un Chirurgien</a>
+                    </div>
+                </div>
+
+                <!-- Cardiologie -->
+                <div class="service-card" data-category="medical">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Cardiologie</h3>
+                        <p>Soins du cœur et des vaisseaux</p>
+                    </div>
+                    <div class="service-content">
+                        <p>Diagnostic, traitement et suivi des maladies cardiovasculaires avec des équipements de pointe.</p>
+                        <div class="service-features">
+                            <li><i class="fas fa-check"></i> Échocardiographie</li>
+                            <li><i class="fas fa-check"></i> ECG et Holter</li>
+                            <li><i class="fas fa-check"></i> Tests d'effort</li>
+                            <li><i class="fas fa-check"></i> Réadaptation cardiaque</li>
+                        </div>
+                        <div class="service-hours">
+                            <h4>Horaires</h4>
+                            <p>Lun - Ven: 8h00 - 17h00<br>Consultations sur RDV</p>
+                        </div>
+                        <a href="#" class="btn btn-outline">Prendre Rendez-vous</a>
+                    </div>
+                </div>
+
+                <!-- Radiologie -->
+                <div class="service-card" data-category="diagnostic">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-x-ray"></i>
+                        </div>
+                        <h3>Radiologie & Imagerie</h3>
+                        <p>Diagnostic par imagerie médicale</p>
+                    </div>
+                    <div class="service-content">
+                        <p>Service d'imagerie médicale complet avec des équipements modernes pour un diagnostic précis.</p>
+                        <div class="service-features">
+                            <li><i class="fas fa-check"></i> Radiographie numérique</li>
+                            <li><i class="fas fa-check"></i> Échographie</li>
+                            <li><i class="fas fa-check"></i> Scanner</li>
+                            <li><i class="fas fa-check"></i> Mammographie</li>
+                        </div>
+                        <div class="service-hours">
+                            <h4>Horaires</h4>
+                            <p>Lun - Sam: 7h00 - 19h00<br>Urgences: 24h/24</p>
+                        </div>
+                        <a href="#" class="btn btn-outline">Demander un Examen</a>
+                    </div>
+                </div>
+
+                <!-- Laboratoire -->
+                <div class="service-card" data-category="diagnostic">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <h3>Laboratoire d'Analyses</h3>
+                        <p>Analyses médicales et biologiques</p>
+                    </div>
+                    <div class="service-content">
+                        <p>Laboratoire équipé pour réaliser tous types d'analyses médicales avec des résultats rapides et fiables.</p>
+                        <div class="service-features">
+                            <li><i class="fas fa-check"></i> Biochimie sanguine</li>
+                            <li><i class="fas fa-check"></i> Hématologie</li>
+                            <li><i class="fas fa-check"></i> Bactériologie</li>
+                            <li><i class="fas fa-check"></i> Sérologie</li>
+                        </div>
+                        <div class="service-hours">
+                            <h4>Horaires</h4>
+                            <p>Lun - Sam: 6h00 - 18h00<br>Prélèvements sans RDV</p>
+                        </div>
+                        <a href="#" class="btn btn-outline">Prendre Rendez-vous</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Section -->
+    <section class="section emergency">
+        <div class="container">
+            <div class="emergency-content">
+                <h2>Service des Urgences</h2>
+                <p>Notre service d'urgences est ouvert 24h/24 et 7j/7 pour prendre en charge toutes les situations médicales critiques</p>
+                <span class="emergency-number">+243 815 123 456</span>
+                <p>Équipe médicale disponible en permanence • Prise en charge immédiate • Plateau technique complet</p>
+                <a href="tel:+243815123456" class="btn">Appeler les Urgences</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section class="section specialties">
+        <div class="container">
+            <div class="section-title">
+                <h2>Spécialités Médicales</h2>
+                <p>Nos médecins spécialistes à votre service</p>
+            </div>
+            <div class="specialties-grid">
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <h3>Pneumologie</h3>
+                    <p>Diagnostic et traitement des maladies respiratoires</p>
+                    <a href="#" class="btn btn-outline">En savoir plus</a>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Neurologie</h3>
+                    <p>Soins des maladies du système nerveux</p>
+                    <a href="#" class="btn btn-outline">En savoir plus</a>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h3>Orthopédie</h3>
+                    <p>Traitement des affections musculo-squelettiques</p>
+                    <a href="#" class="btn btn-outline">En savoir plus</a>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Ophtalmologie</h3>
+                    <p>Soins de la vision et des maladies oculaires</p>
+                    <a href="#" class="btn btn-outline">En savoir plus</a>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <h3>Dentisterie</h3>
+                    <p>Soins dentaires complets et chirurgie buccale</p>
+                    <a href="#" class="btn btn-outline">En savoir plus</a>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3>Gynécologie</h3>
+                    <p>Santé féminine et suivi gynécologique</p>
+                    <a href="#" class="btn btn-outline">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagnostic Section -->
+    <section class="section diagnostic">
+        <div class="container">
+            <div class="diagnostic-content">
+                <div class="diagnostic-image">
+                    <img src="lesmateriels.jpg" alt="Équipements de diagnostic">
+                </div>
+                <div class="diagnostic-text">
+                    <h2>Diagnostic de Précision</h2>
+                    <p>Notre département de diagnostic dispose des technologies les plus avancées pour assurer des résultats précis et rapides.</p>
+                    <p>Tous nos équipements sont régulièrement entretenus et calibrés selon les normes internationales.</p>
+                    
+                    <div class="diagnostic-services">
+                        <div class="diagnostic-service">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Imagerie Médicale Complète</h4>
+                                <p>Radiographie, échographie, scanner et IRM</p>
+                            </div>
+                        </div>
+                        <div class="diagnostic-service">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Laboratoire d'Analyses</h4>
+                                <p>Analyses sanguines, urinaires et microbiologiques</p>
+                            </div>
+                        </div>
+                        <div class="diagnostic-service">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Explorations Fonctionnelles</h4>
+                                <p>Tests cardiaques, respiratoires et neurologiques</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn">Découvrir nos Équipements</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section class="appointment" id="appointment">
+        <div class="container">
+            <h2>Prendre Rendez-vous</h2>
+            <p>Plusieurs options s'offrent à vous pour prendre rendez-vous avec nos spécialistes</p>
+            
+            <div class="appointment-options">
+                <div class="appointment-option">
+                    <h3>Par Téléphone</h3>
+                    <p>Appelez notre standard au</p>
+                    <p style="font-size: 1.5rem; font-weight: bold;">+243 815 987 654</p>
+                    <p>Lun - Ven: 7h00 - 19h00<br>Sam: 8h00 - 16h00</p>
+                </div>
+                <div class="appointment-option">
+                    <h3>En Personne</h3>
+                    <p>Rendez-vous à l'accueil de l'hôpital</p>
+                    <p>Service des rendez-vous<br>Bâtiment principal</p>
+                    <p>Ouvert du lundi au samedi</p>
+                </div>
+                <div class="appointment-option">
+                    <h3>En Ligne</h3>
+                    <p>Prenez rendez-vous via notre plateforme en ligne</p>
+                    <p>Disponible 24h/24<br>Confirmation immédiate</p>
+                    <a href="#" class="btn" style="margin-top: 15px;">Réserver en Ligne</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>HGR Mwangeji</h3>
+                    <p>L'Hôpital Général de Référence Mwangeji de Kolwezi s'engage à fournir des soins de santé de qualité à la population de Kolwezi et ses environs.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens Rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="departements.html">Départements</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Médecine Générale</a></li>
+                        <li><a href="#">Pédiatrie</a></li>
+                        <li><a href="#">Cardiologie</a></li>
+                        <li><a href="#">Radiologie</a></li>
+                        <li><a href="#">Urgences</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Avenue Mwangeji, Kolwezi, RDC</p>
+                    <p><i class="fas fa-phone"></i> +243 815 123 456</p>
+                    <p><i class="fas fa-envelope"></i> info@hgrmwangeji.cd</p>
+                    <p><i class="fas fa-clock"></i> Urgences: 24h/24</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Hôpital Général de Référence Mwangeji de Kolwezi. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Services category filtering
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const serviceCards = document.querySelectorAll('.service-card');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const category = btn.getAttribute('data-category');
+                
+                // Filter service cards
+                serviceCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

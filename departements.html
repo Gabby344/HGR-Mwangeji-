@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Départements - Hôpital Général de Référence Mwangeji de Kolwezi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary: #1a73e8;
+            --secondary: #0d47a1;
+            --accent: #e8f0fe;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --success: #34a853;
+            --warning: #f9ab00;
+            --danger: #ea4335;
+            --text: #333333;
+            --text-light: #757575;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Departments */
+        .hero-departments {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('lesbatimentshopital.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-departments-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-departments h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-departments p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Departments Navigation */
+        .departments-nav {
+            background-color: white;
+            padding: 30px 0;
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .departments-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .dept-nav-item {
+            padding: 12px 25px;
+            background-color: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dept-nav-item.active, .dept-nav-item:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Departments Grid */
+        .departments-main {
+            background-color: var(--light);
+        }
+
+        .department-section {
+            margin-bottom: 80px;
+            scroll-margin-top: 150px;
+        }
+
+        .department-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .department-header h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .department-header p {
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .department-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .department-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .department-features {
+            margin: 25px 0;
+        }
+
+        .department-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 10px;
+            background-color: var(--accent);
+            border-radius: 5px;
+        }
+
+        .department-features i {
+            color: var(--success);
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+
+        .department-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .stat-box {
+            background-color: var(--accent);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .department-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .department-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .department-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Emergency Department Special Styling */
+        .department-emergency {
+            background: linear-gradient(135deg, var(--danger), #c62828);
+            color: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .department-emergency .department-info {
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .department-emergency h2, 
+        .department-emergency h3,
+        .department-emergency p {
+            color: white;
+        }
+
+        .department-emergency .department-features li {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Medical Staff Section */
+        .medical-staff {
+            background-color: white;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .staff-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .staff-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .staff-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .staff-card:hover .staff-image img {
+            transform: scale(1.1);
+        }
+
+        .staff-info {
+            padding: 25px 20px;
+        }
+
+        .staff-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .staff-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .staff-department {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .staff-contact {
+            background-color: var(--accent);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* Facilities Section */
+        .facilities {
+            background-color: var(--accent);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .facility-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .facility-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .facility-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .facility-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* CTA Section */
+        .cta-departments {
+            background: linear-gradient(rgba(26, 115, 232, 0.9), rgba(13, 71, 161, 0.9)), url('lacourshopital.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-departments h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-departments p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .department-content {
+                grid-template-columns: 1fr;
+            }
+
+            .department-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .hero-departments h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-departments p {
+                font-size: 1rem;
+            }
+
+            .departments-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .department-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero-departments h1 {
+                font-size: 2rem;
+            }
+
+            .cta-departments h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">HGR <span>Mwangeji</span></div>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="departements.html" class="active">Départements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Departments Section -->
+    <section class="hero-departments">
+        <div class="hero-departments-content">
+            <h1>Nos Départements Médicaux</h1>
+            <p>Découvrez l'organisation et les spécialités de chaque département de notre hôpital</p>
+            <a href="#departments" class="btn">Explorer les Départements</a>
+        </div>
+    </section>
+
+    <!-- Departments Navigation -->
+    <section class="departments-nav" id="departmentsNav">
+        <div class="container">
+            <div class="departments-menu">
+                <button class="dept-nav-item active" data-dept="urgence">
+                    <i class="fas fa-ambulance"></i> Urgences
+                </button>
+                <button class="dept-nav-item" data-dept="medecine">
+                    <i class="fas fa-stethoscope"></i> Médecine
+                </button>
+                <button class="dept-nav-item" data-dept="chirurgie">
+                    <i class="fas fa-scalpel"></i> Chirurgie
+                </button>
+                <button class="dept-nav-item" data-dept="pediatrie">
+                    <i class="fas fa-baby"></i> Pédiatrie
+                </button>
+                <button class="dept-nav-item" data-dept="maternite">
+                    <i class="fas fa-baby-carriage"></i> Maternité
+                </button>
+                <button class="dept-nav-item" data-dept="diagnostic">
+                    <i class="fas fa-x-ray"></i> Diagnostic
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Main Content -->
+    <section class="section departments-main" id="departments">
+        <div class="container">
+            <!-- Département des Urgences -->
+            <div class="department-section department-emergency" id="urgence">
+                <div class="department-header">
+                    <h2>Département des Urgences</h2>
+                    <p>Service d'urgences médicales et chirurgicales ouvert 24h/24</p>
+                </div>
+                <div class="department-content">
+                    <div class="department-info">
+                        <h3>Prise en Charge Immédiate</h3>
+                        <p>Notre département des urgences est équipé pour prendre en charge toutes les situations médicales critiques avec une équipe médicale disponible en permanence.</p>
+                        
+                        <div class="department-features">
+                            <li><i class="fas fa-check"></i> Salle de réanimation équipée</li>
+                            <li><i class="fas fa-check"></i> Plateau technique complet</li>
+                            <li><i class="fas fa-check"></i> Équipe multidisciplinaire</li>
+                            <li><i class="fas fa-check"></i> Laboratoire d'urgence</li>
+                            <li><i class="fas fa-check"></i> Radiologie d'urgence</li>
+                        </div>
+
+                        <div class="department-stats">
+                            <div class="stat-box">
+                                <span class="stat-number">24h/24</span>
+                                <span class="stat-label">Ouverture</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number">15min</span>
+                                <span class="stat-label">Délai moyen de prise en charge</span>
+                            </div>
+                        </div>
+
+                        <div class="emergency-contact">
+                            <h4>Contact Urgences</h4>
+                            <p style="font-size: 1.5rem; font-weight: bold; margin: 10px 0;">+243 815 123 456</p>
+                            <a href="tel:+243815123456" class="btn">Appeler les Urgences</a>
+                        </div>
+                    </div>
+                    <div class="department-image">
+                        <img src="lessoins.jpg" alt="Département des Urgences">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Département de Médecine -->
+            <div class="department-section" id="medecine">
+                <div class="department-header">
+                    <h2>Département de Médecine Interne</h2>
+                    <p>Soins médicaux spécialisés pour adultes</p>
+                </div>
+                <div class="department-content">
+                    <div class="department-image">
+                        <img src="https://images.unsplash.com/photo-1584467735871-8db9ac8d55b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Département de Médecine">
+                    </div>
+                    <div class="department-info">
+                        <h3>Médecine Polyvalente</h3>
+                        <p>Notre département de médecine interne offre des soins complets pour les maladies aiguës et chroniques chez l'adulte.</p>
+                        
+                        <div class="department-features">
+                            <li><i class="fas fa-check"></i> Hospitalisation conventionnelle</li>
+                            <li><i class="fas fa-check"></i> Soins intensifs médicaux</li>
+                            <li><i class="fas fa-check"></i> Consultations spécialisées</li>
+                            <li><i class="fas fa-check"></i> Suivi des maladies chroniques</li>
+                            <li><i class="fas fa-check"></i> Éducation thérapeutique</li>
+                        </div>
+
+                        <div class="department-stats">
+                            <div class="stat-box">
+                                <span class="stat-number">45</span>
+                                <span class="stat-label">Lits d'hospitalisation</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number">8</span>
+                                <span class="stat-label">Médecins spécialistes</span>
+                            </div>
+                        </div>
+
+                        <a href="#" class="btn">Prendre Rendez-vous</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Département de Chirurgie -->
+            <div class="department-section" id="chirurgie">
+                <div class="department-header">
+                    <h2>Département de Chirurgie</h2>
+                    <p>Chirurgie générale et spécialisée</p>
+                </div>
+                <div class="department-content">
+                    <div class="department-info">
+                        <h3>Excellence Chirurgicale</h3>
+                        <p>Notre département de chirurgie dispose de blocs opératoires modernes et d'une équipe chirurgicale expérimentée.</p>
+                        
+                        <div class="department-features">
+                            <li><i class="fas fa-check"></i> 3 blocs opératoires</li>
+                            <li><i class="fas fa-check"></i> Chirurgie mini-invasive</li>
+                            <li><i class="fas fa-check"></i> Réanimation post-opératoire</li>
+                            <li><i class="fas fa-check"></i> Chirurgie ambulatoire</li>
+                            <li><i class="fas fa-check"></i> Urgences chirurgicales</li>
+                        </div>
+
+                        <div class="department-stats">
+                            <div class="stat-box">
+                                <span class="stat-number">25</span>
+                                <span class="stat-label">Lits de chirurgie</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number">120+</span>
+                                <span class="stat-label">Interventions/mois</span>
+                            </div>
+                        </div>
+
+                        <a href="#" class="btn">Consulter un Chirurgien</a>
+                    </div>
+                    <div class="department-image">
+                        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Département de Chirurgie">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Département de Pédiatrie -->
+            <div class="department-section" id="pediatrie">
+                <div class="department-header">
+                    <h2>Département de Pédiatrie</h2>
+                    <p>Soins spécialisés pour les enfants et adolescents</p>
+                </div>
+                <div class="department-content">
+                    <div class="department-image">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Département de Pédiatrie">
+                    </div>
+                    <div class="department-info">
+                        <h3>Univers Enfant</h3>
+                        <p>Un environnement adapté aux enfants avec une approche médicale spécifique pour chaque tranche d'âge.</p>
+                        
+                        <div class="department-features">
+                            <li><i class="fas fa-check"></i> Hospitalisation pédiatrique</li>
+                            <li><i class="fas fa-check"></i> Consultations de croissance</li>
+                            <li><i class="fas fa-check"></i> Vaccination infantile</li>
+                            <li><i class="fas fa-check"></i> Puériculture</li>
+                            <li><i class="fas fa-check"></i> Éducation thérapeutique</li>
+                        </div>
+
+                        <div class="department-stats">
+                            <div class="stat-box">
+                                <span class="stat-number">30</span>
+                                <span class="stat-label">Lits pédiatriques</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number">5</span>
+                                <span class="stat-label">Pédiatres</span>
+                            </div>
+                        </div>
+
+                        <a href="#" class="btn">Prendre Rendez-vous</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Département de Maternité -->
+            <div class="department-section" id="maternite">
+                <div class="department-header">
+                    <h2>Département de Maternité</h2>
+                    <p>Accompagnement complet de la grossesse à l'accouchement</p>
+                </div>
+                <div class="department-content">
+                    <div class="department-info">
+                        <h3>Naissance en Sécurité</h3>
+                        <p>Notre maternité offre un accompagnement personnalisé pour vivre une grossesse et un accouchement sereins.</p>
+                        
+                        <div class="department-features">
+                            <li><i class="fas fa-check"></i> Suivi de grossesse</li>
+                            <li><i class="fas fa-check"></i> Préparation à l'accouchement</li>
+                            <li><i class="fas fa-check"></i> Salles de naissance</li>
+                            <li><i class="fas fa-check"></i> Soins post-natals</li>
+                            <li><i class="fas fa-check"></i> Allaitement maternel</li>
+                        </div>
+
+                        <div class="department-stats">
+                            <div class="stat-box">
+                                <span class="stat-number">150+</span>
+                                <span class="stat-label">Naissances/mois</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number">4</span>
+                                <span class="stat-label">Sages-femmes</span>
+                            </div>
+                        </div>
+
+                        <a href="#" class="btn">Prendre Rendez-vous</a>
+                    </div>
+                    <div class="department-image">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Département de Maternité">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Département de Diagnostic -->
+            <div class="department-section" id="diagnostic">
+                <div class="department-header">
+                    <h2>Département de Diagnostic</h2>
+                    <p>Imagerie médicale et laboratoire d'analyses</p>
+                </div>
+                <div class="department-content">
+                    <div class="department-image">
+                        <img src="lesmateriels.jpg" alt="Département de Diagnostic">
+                    </div>
+                    <div class="department-info">
+                        <h3>Technologies de Pointe</h3>
+                        <p>Notre département de diagnostic utilise les technologies les plus avancées pour des résultats précis et rapides.</p>
+                        
+                        <div class="department-features">
+                            <li><i class="fas fa-check"></i> Radiologie numérique</li>
+                            <li><i class="fas fa-check"></i> Échographie Doppler</li>
+                            <li><i class="fas fa-check"></i> Scanner 64 barrettes</li>
+                            <li><i class="fas fa-check"></i> Laboratoire automatisé</li>
+                            <li><i class="fas fa-check"></i> Résultats en ligne</li>
+                        </div>
+
+                        <div class="department-stats">
+                            <div class="stat-box">
+                                <span class="stat-number">2h</span>
+                                <span class="stat-label">Délai moyen résultats</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">Précision diagnostique</span>
+                            </div>
+                        </div>
+
+                        <a href="#" class="btn">Demander un Examen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Medical Staff Section -->
+    <section class="section medical-staff">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notre Équipe Médicale</h2>
+                <p>Des professionnels dévoués dans chaque département</p>
+            </div>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dr. François Kabila">
+                    </div>
+                    <div class="staff-info">
+                        <h3>Dr. François Kabila</h3>
+                        <span class="staff-role">Chef de Département Urgences</span>
+                        <div class="staff-department">Médecine d'Urgence</div>
+                        <p>20 ans d'expérience en médecine d'urgence</p>
+                        <div class="staff-contact">
+                            <i class="fas fa-phone"></i> Poste: 210
+                        </div>
+                    </div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dr. Marie-Louise Tshibangu">
+                    </div>
+                    <div class="staff-info">
+                        <h3>Dr. Marie-Louise Tshibangu</h3>
+                        <span class="staff-role">Cheffe de Maternité</span>
+                        <div class="staff-department">Gynécologie-Obstétrique</div>
+                        <p>Spécialiste en périnatologie</p>
+                        <div class="staff-contact">
+                            <i class="fas fa-phone"></i> Poste: 315
+                        </div>
+                    </div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dr. Patrick Ilunga">
+                    </div>
+                    <div class="staff-info">
+                        <h3>Dr. Patrick Ilunga</h3>
+                        <span class="staff-role">Chef de Chirurgie</span>
+                        <div class="staff-department">Chirurgie Générale</div>
+                        <p>Expert en chirurgie digestive</p>
+                        <div class="staff-contact">
+                            <i class="fas fa-phone"></i> Poste: 415
+                        </div>
+                    </div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <img src="https://images.unsplash.com/photo-1594824947933-d0501ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dr. Sophie Mbayo">
+                    </div>
+                    <div class="staff-info">
+                        <h3>Dr. Sophie Mbayo</h3>
+                        <span class="staff-role">Pédiatre</span>
+                        <div class="staff-department">Pédiatrie</div>
+                        <p>Spécialiste en néonatologie</p>
+                        <div class="staff-contact">
+                            <i class="fas fa-phone"></i> Poste: 512
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="section facilities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Installations et Équipements</h2>
+                <p>Des infrastructures modernes pour des soins de qualité</p>
+            </div>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <h3>Chambres d'Hospitalisation</h3>
+                    <p>Chambres individuelles et collectives équipées pour un séjour confortable</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-clinic-medical"></i>
+                    </div>
+                    <h3>Bloc Opératoire</h3>
+                    <p>3 salles d'opération équipées de technologies de pointe</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Laboratoire</h3>
+                    <p>Laboratoire d'analyses médicales automatisé et certifié</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <h3>Imagerie Médicale</h3>
+                    <p>Radiologie, échographie et scanner dernière génération</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3>Service Ambulancier</h3>
+                    <p>Ambulances médicalisées disponibles 24h/24</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3>Pharmacie</h3>
+                    <p>Pharmacie hospitalière avec stock permanent de médicaments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-departments">
+        <div class="container">
+            <h2>Visitez Nos Départements</h2>
+            <p>Planifiez une visite de nos installations ou prenez rendez-vous avec nos spécialistes</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px;">
+                <a href="contact.html" class="btn">Planifier une Visite</a>
+                <a href="services.html" class="btn btn-outline">Voir nos Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>HGR Mwangeji</h3>
+                    <p>L'Hôpital Général de Référence Mwangeji de Kolwezi s'engage à fournir des soins de santé de qualité à la population de Kolwezi et ses environs.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens Rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="departements.html">Départements</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Départements</h3>
+                    <ul class="footer-links">
+                        <li><a href="#urgence">Urgences</a></li>
+                        <li><a href="#medecine">Médecine</a></li>
+                        <li><a href="#chirurgie">Chirurgie</a></li>
+                        <li><a href="#pediatrie">Pédiatrie</a></li>
+                        <li><a href="#maternite">Maternité</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Avenue Mwangeji, Kolwezi, RDC</p>
+                    <p><i class="fas fa-phone"></i> +243 815 123 456</p>
+                    <p><i class="fas fa-envelope"></i> info@hgrmwangeji.cd</p>
+                    <p><i class="fas fa-clock"></i> Urgences: 24h/24</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Hôpital Général de Référence Mwangeji de Kolwezi. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Departments navigation
+        const deptNavItems = document.querySelectorAll('.dept-nav-item');
+        const departmentSections = document.querySelectorAll('.department-section');
+
+        deptNavItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all items
+                deptNavItems.forEach(i => i.classList.remove('active'));
+                // Add active class to clicked item
+                item.classList.add('active');
+                
+                const deptId = item.getAttribute('data-dept');
+                const targetSection = document.getElementById(deptId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active nav item on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    deptNavItems.forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('data-dept') === id) {
+                            item.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        departmentSections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 150,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

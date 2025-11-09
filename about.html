@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - Hôpital Général de Référence Mwangeji de Kolwezi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary: #1a73e8;
+            --secondary: #0d47a1;
+            --accent: #e8f0fe;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --success: #34a853;
+            --warning: #f9ab00;
+            --danger: #ea4335;
+            --text: #333333;
+            --text-light: #757575;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero About */
+        .hero-about {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('exterieurhopital.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-about h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-about p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* History Section */
+        .history {
+            background-color: white;
+        }
+
+        .history-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .history-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .history-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .history-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .history-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .history-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .history-milestones {
+            margin-top: 30px;
+        }
+
+        .milestone {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .milestone-year {
+            background-color: var(--primary);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .milestone-text h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        /* Mission Section */
+        .mission {
+            background-color: var(--accent);
+        }
+
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .mission-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .mission-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .mission-card p {
+            color: var(--text-light);
+        }
+
+        /* Team Section */
+        .team {
+            background-color: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+
+        .member-info {
+            padding: 25px 20px;
+        }
+
+        .member-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .member-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Values Section */
+        .values {
+            background-color: var(--accent);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+        }
+
+        .value-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .value-item p {
+            color: var(--text-light);
+        }
+
+        /* Infrastructure Section */
+        .infrastructure {
+            background-color: white;
+        }
+
+        .infrastructure-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .infrastructure-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .infrastructure-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .infrastructure-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .infrastructure-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .infrastructure-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .infrastructure-features {
+            margin-top: 30px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon {
+            background-color: var(--accent);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(rgba(26, 115, 232, 0.9), rgba(13, 71, 161, 0.9)), url('lacourshopital.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .history-content, .infrastructure-content {
+                grid-template-columns: 1fr;
+            }
+
+            .history-image, .infrastructure-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .hero-about h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-about p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero-about h1 {
+                font-size: 2rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">HGR <span>Mwangeji</span></div>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html" class="active">À Propos</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="departements.html">Départements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero About Section -->
+    <section class="hero-about">
+        <div class="hero-about-content">
+            <h1>À Propos de l'HGR Mwangeji</h1>
+            <p>Découvrez l'histoire, la mission et les valeurs de l'Hôpital Général de Référence Mwangeji de Kolwezi</p>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="section history">
+        <div class="container">
+            <div class="history-content">
+                <div class="history-text">
+                    <h2>Notre Histoire</h2>
+                    <p>L'Hôpital Général de Référence Mwangeji de Kolwezi a été créé pour répondre aux besoins croissants en soins de santé de la population de Kolwezi et de ses environs. Depuis sa création, l'hôpital n'a cessé de se développer pour offrir des services médicaux de qualité.</p>
+                    <p>Établissement de référence dans la province du Lualaba, l'HGR Mwangeji s'est imposé comme un pilier du système de santé régional, accueillant des patients de toute la région et même au-delà.</p>
+                    
+                    <div class="history-milestones">
+                        <div class="milestone">
+                            <div class="milestone-year">1985</div>
+                            <div class="milestone-text">
+                                <h4>Création de l'Hôpital</h4>
+                                <p>Fondation de l'Hôpital Général de Référence Mwangeji pour servir la communauté de Kolwezi.</p>
+                            </div>
+                        </div>
+                        <div class="milestone">
+                            <div class="milestone-year">2002</div>
+                            <div class="milestone-text">
+                                <h4>Modernisation des Équipements</h4>
+                                <p>Acquisition d'équipements médicaux modernes pour améliorer la qualité des soins.</p>
+                            </div>
+                        </div>
+                        <div class="milestone">
+                            <div class="milestone-year">2015</div>
+                            <div class="milestone-text">
+                                <h4>Agrandissement des Installations</h4>
+                                <p>Construction de nouveaux bâtiments et extension des services spécialisés.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="history-image">
+                    <img src="entrehopital.jpg" alt="Histoire de l'Hôpital Mwangeji">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="section mission">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notre Mission, Vision et Valeurs</h2>
+                <p>Les principes fondamentaux qui guident nos actions au quotidien</p>
+            </div>
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Notre Mission</h3>
+                    <p>Offrir des soins de santé complets, accessibles et de qualité à la population de Kolwezi et ses environs, en mettant l'accent sur la prévention, le traitement et la réhabilitation.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Notre Vision</h3>
+                    <p>Devenir l'établissement hospitalier de référence en RDC, reconnu pour l'excellence de ses soins, l'expertise de son personnel et l'innovation médicale.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Nos Valeurs</h3>
+                    <p>Intégrité, compassion, excellence, respect et innovation sont les valeurs qui guident chaque membre de notre équipe dans l'accomplissement de sa mission.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notre Équipe de Direction</h2>
+                <p>Des professionnels dévoués à l'excellence des soins de santé</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Directeur Médical">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dr. François Kabila</h3>
+                        <div class="member-role">Directeur Médical</div>
+                        <p class="member-description">Médecin spécialiste avec plus de 20 ans d'expérience dans la gestion hospitalière.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Directeur Administratif">
+                    </div>
+                    <div class="member-info">
+                        <h3>M. Jean Mulumba</h3>
+                        <div class="member-role">Directeur Administratif</div>
+                        <p class="member-description">Expert en gestion des établissements de santé avec une formation en administration hospitalière.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1594824947933-d0501ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Chef de Service Infirmier">
+                    </div>
+                    <div class="member-info">
+                        <h3>Mme. Marie-Louise Tshibangu</h3>
+                        <div class="member-role">Chef de Service Infirmier</div>
+                        <p class="member-description">Infirmière en chef avec 25 ans d'expérience dans la supervision des soins infirmiers.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Chef des Services Techniques">
+                    </div>
+                    <div class="member-info">
+                        <h3>M. Patrick Ilunga</h3>
+                        <div class="member-role">Chef des Services Techniques</div>
+                        <p class="member-description">Responsable de la maintenance des équipements médicaux et des infrastructures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section values">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Valeurs Fondamentales</h2>
+                <p>Les principes qui guident nos actions au quotidien</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Excellence Médicale</h3>
+                    <p>Nous nous engageons à fournir des soins de la plus haute qualité grâce à une formation continue et l'adoption des meilleures pratiques médicales.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Compassion</h3>
+                    <p>Nous traitons chaque patient avec empathie, dignité et respect, en comprenant leurs besoins physiques et émotionnels.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Travail d'Équipe</h3>
+                    <p>Nous favorisons la collaboration entre tous les membres du personnel pour assurer des soins coordonnés et complets.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Intégrité</h3>
+                    <p>Nous maintenons les plus hauts standards d'éthique professionnelle et de transparence dans toutes nos actions.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>Nous adoptons les technologies médicales avancées et les approches innovantes pour améliorer continuellement nos services.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Engagement Communautaire</h3>
+                    <p>Nous nous investissons activement dans la santé de notre communauté par l'éducation et la prévention.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructure Section -->
+    <section class="section infrastructure">
+        <div class="container">
+            <div class="infrastructure-content">
+                <div class="infrastructure-image">
+                    <img src="lesbatimentshopital.jpg" alt="Infrastructure de l'Hôpital Mwangeji">
+                </div>
+                <div class="infrastructure-text">
+                    <h2>Notre Infrastructure</h2>
+                    <p>L'HGR Mwangeji dispose d'installations modernes et bien équipées pour offrir des soins complets à nos patients. Notre infrastructure comprend plusieurs bâtiments spécialisés conçus pour optimiser la prestation des soins.</p>
+                    <p>Nous avons continuellement investi dans la modernisation de nos équipements et l'amélioration de nos installations pour répondre aux normes internationales de soins de santé.</p>
+                    
+                    <div class="infrastructure-features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Bâtiments Modernes</h4>
+                                <p>Infrastructure hospitalière conçue selon les standards modernes avec des espaces optimisés pour les soins.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-procedures"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Équipements de Pointe</h4>
+                                <p>Appareils médicaux modernes pour le diagnostic et le traitement des patients.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-tree"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Environnement Accueillant</h4>
+                                <p>Espaces verts et environnement conçu pour le bien-être des patients et du personnel.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Rejoignez Notre Équipe</h2>
+            <p>Vous êtes un professionnel de santé passionné et désireux de faire la différence? Découvrez les opportunités de carrière à l'HGR Mwangeji.</p>
+            <a href="contact.html" class="btn">Postuler Maintenant</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>HGR Mwangeji</h3>
+                    <p>L'Hôpital Général de Référence Mwangeji de Kolwezi s'engage à fournir des soins de santé de qualité à la population de Kolwezi et ses environs.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens Rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="departements.html">Départements</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Médecine Générale</a></li>
+                        <li><a href="#">Pédiatrie</a></li>
+                        <li><a href="#">Cardiologie</a></li>
+                        <li><a href="#">Radiologie</a></li>
+                        <li><a href="#">Urgences</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Avenue Mwangeji, Kolwezi, RDC</p>
+                    <p><i class="fas fa-phone"></i> +243 123 456 789</p>
+                    <p><i class="fas fa-envelope"></i> info@hgrmwangeji.cd</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Hôpital Général de Référence Mwangeji de Kolwezi. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
